@@ -3,8 +3,10 @@ from flask import request
 from flask import make_response
 from flask import redirect
 from flask import render_template
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 todos = ['Comprar cafe', 'cambiar solicitud de compra', 'entregar video a productor']
 
 @app.errorhandler(404)
