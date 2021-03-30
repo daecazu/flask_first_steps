@@ -5,7 +5,7 @@ from flask import redirect
 from flask import render_template
 
 app = Flask(__name__)
-todos = ['TODO 1', 'TODO 2', 'TODO 3']
+todos = ['Comprar cafe', 'cambiar solicitud de compra', 'entregar video a productor']
 
 @app.route('/')
 def index():
