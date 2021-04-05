@@ -1,5 +1,6 @@
 # Flask imports
 from flask import Flask
+from flask import flash
 from flask import request
 from flask import make_response
 from flask import redirect
@@ -63,5 +64,6 @@ def hello():
     if login_form.validate_on_submit():
         username = login_form.username.data
         session['username'] = username
+        flash('Nombre de usuario registrado')
         return redirect(url_for('index'))
     return render_template('hello.html', **context)
