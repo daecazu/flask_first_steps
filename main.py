@@ -1,5 +1,5 @@
 # Flask imports
-from flask import Flask
+
 from flask import flash
 from flask import request
 from flask import make_response
@@ -7,33 +7,18 @@ from flask import redirect
 from flask import render_template
 from flask import session
 from flask import url_for
-from flask_bootstrap import Bootstrap
-from flask_wtf import FlaskForm
-# wtforms imports
-from wtforms.fields import StringField
-from wtforms.fields import PasswordField 
-from wtforms.fields import SubmitField
-from wtforms.validators import DataRequired
+
 # tests
 import unittest
 
-app = Flask(__name__)
-bootstrap = Bootstrap(app)
+from app import create_app
+from app.forms import LoginForm
 
-app.config['SECRET_KEY'] = 'Super SECRETO'
+app = create_app()
 
 todos = ['Comprar cafe', 'cambiar solicitud de compra', 'entregar video a productor']
 
-class LoginForm(FlaskForm):
-    username = StringField(
-        'Nombre de usuario',
-        validators=[DataRequired()]
-    )
-    password = PasswordField(
-        'Password',
-        validators=[DataRequired()]
-    )
-    submit = SubmitField('Enviar')
+
 
 @app.cli.command()
 def test():
