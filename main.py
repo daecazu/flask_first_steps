@@ -14,6 +14,8 @@ from wtforms.fields import StringField
 from wtforms.fields import PasswordField 
 from wtforms.fields import SubmitField
 from wtforms.validators import DataRequired
+# tests
+import unittest
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -33,6 +35,10 @@ class LoginForm(FlaskForm):
     )
     submit = SubmitField('Enviar')
 
+@app.cli.command()
+def test():
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(tests)
 
 @app.errorhandler(404)
 def not_found(error):
