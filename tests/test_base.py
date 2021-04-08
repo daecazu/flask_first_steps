@@ -25,19 +25,16 @@ class MainTest(TestCase):
         self.assert200(response)
     
     def test_hello_post(self):
-        fake_form = {
-            'username': 'fake',
-            'password': 'fake-password'
-        }
-        response = self.client.post(url_for('hello'), data=fake_form)
-        self.assertRedirects(response, url_for('index'))
-    
+        response = self.client.post(url_for('hello'))
+        self.assertTrue(response.status_code, 405)
+        pass
+
     def test_user_registered_flashed_message(self):
         fake_form = {
             'username': 'vijoin',
             'password': '123456'
         }
-        self.client.post(url_for('hello'), data=fake_form)
+        self.client.post(url_for('auth.login'), data=fake_form)
         message = 'Nombre de usuario registrado'
         self.assert_message_flashed(message)
     
@@ -52,3 +49,10 @@ class MainTest(TestCase):
         self.client.get(url_for('auth.login'))
         self.assertTemplateUsed('login.html')
     
+    def test_auth_login_post(self):
+        fake_form = {
+            'username': 'fake',
+            'password': 'fake-password'
+        }
+        response = self.client.post(url_for('auth.login'), data=fake_form)
+        self.assertRedirects(response, url_for('index'))
