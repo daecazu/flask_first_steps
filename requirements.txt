@@ -4,3 +4,4 @@ flask-wtf==0.14.3
 flask-testing ==0.8.1
 blinker
 firebase-admin
+flask-login

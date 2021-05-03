@@ -9,6 +9,7 @@ from flask import session
 from flask import url_for
 from app.firestore_service import get_users
 from app.firestore_service import get_todos
+from flask_login import login_required
 
 # tests
 import unittest
@@ -44,6 +45,7 @@ def index():
     return response
 
 @app.route('/hello', methods=['GET'])
+@login_required
 def hello():
     user_ip = session.get('user_ip')
     #login_form = LoginForm()
