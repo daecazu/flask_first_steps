@@ -10,6 +10,7 @@ from flask import url_for
 from app.firestore_service import get_users
 from app.firestore_service import get_todos
 from flask_login import login_required
+from flask_login import current_user
 
 # tests
 import unittest
@@ -49,7 +50,7 @@ def index():
 def hello():
     user_ip = session.get('user_ip')
     #login_form = LoginForm()
-    username = session.get('username')
+    username = current_user.id
     context = {
         'user_ip': user_ip,
         'todos': get_todos(user_id=username),

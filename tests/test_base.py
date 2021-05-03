@@ -31,7 +31,7 @@ class MainTest(TestCase):
 
     def test_user_registered_flashed_message(self):
         fake_form = {
-            'username': 'vijoin',
+            'username': 'daniel',
             'password': '123456'
         }
         self.client.post(url_for('auth.login'), data=fake_form)
@@ -51,8 +51,8 @@ class MainTest(TestCase):
     
     def test_auth_login_post(self):
         fake_form = {
-            'username': 'fake',
-            'password': 'fake-password'
+            'username': 'daniel',
+            'password': '123456'
         }
         response = self.client.post(url_for('auth.login'), data=fake_form)
         self.assertRedirects(response, url_for('index'))
