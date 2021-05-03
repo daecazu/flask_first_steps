@@ -7,6 +7,8 @@ from flask import redirect
 from flask import render_template
 from flask import session
 from flask import url_for
+from app.firestore_service import get_users
+from app.firestore_service import get_todos
 
 # tests
 import unittest
@@ -16,7 +18,7 @@ from app.forms import LoginForm
 
 app = create_app()
 
-todos = ['Comprar cafe', 'cambiar solicitud de compra', 'entregar video a productor']
+
 
 
 
@@ -48,7 +50,11 @@ def hello():
     username = session.get('username')
     context = {
         'user_ip': user_ip,
-        'todos': todos,
+        'todos': get_todos(user_id=username),
         'username': username
     } 
+    users = get_users()
+    for user in users:
+        print(user.id)
+        print(user.to_dict()['password'])
     return render_template('hello.html', **context)

@@ -4,3 +4,5 @@ install requirements using
 ## Run
 run using the script 
 * sh script.sh
+## Run Test
+* sh script_test.sh
