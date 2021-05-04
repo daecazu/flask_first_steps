@@ -14,3 +14,10 @@ class LoginForm(FlaskForm):
         validators=[DataRequired()]
     )
     submit = SubmitField('Enviar')
+
+class TodoForm(FlaskForm):
+    description = StringField(
+        'Descripcion',
+        validators=[DataRequired()]
+    )
+    submit = SubmitField('Crear')
